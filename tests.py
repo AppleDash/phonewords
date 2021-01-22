@@ -21,5 +21,13 @@ class PhoneWordsTest(unittest.TestCase):
             {'1AD', '1AE', '1AF', '1BD', '1BE', '1BF', '1CD', '1CE', '1CF'}
         )
 
+    def test_spell_dict(self):
+        phonewords.__words_cache = ['BOWL', 'COWL', 'OWL', 'TEST'] # override cache for faster testing
+
+        self.assertEqual(
+            set(phonewords.spell_dict('2695')),
+            {'BOWL', 'COWL'}
+        )
+
 if __name__ == '__main__':
     unittest.main()
